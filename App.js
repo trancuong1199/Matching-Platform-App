@@ -1,17 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {NativeBaseProvider, Text, Box} from 'native-base';
+import {NavigationContainer} from '@react-navigation/native';
 import Detail from './src/screen/detail';
 import {customTheme} from './src/constants';
-export default function App() {
+import BottomTabs from './src/navigations/BottomTabs';
+
+const App = () => {
   return (
-    <NativeBaseProvider theme={customTheme}>
-      <Detail />
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <BottomTabs />
+    </NavigationContainer>
   );
-}
+};
+
+export default App;
+
+const styles = StyleSheet.create({});
