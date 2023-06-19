@@ -8,11 +8,9 @@ import BottomTabs from './src/navigations/BottomTabs';
 const App = () => {
   return (
     <NavigationContainer>
-      <BottomTabs />
-    </NavigationContainer>
+    <BottomTabs />
+  </NavigationContainer>
   );
-};
+}
 
-export default App;
-
-const styles = StyleSheet.create({});
+export default App
