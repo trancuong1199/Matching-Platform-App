@@ -5,6 +5,10 @@
 -react-native-safe-area-context
 -react-native-svg
 
+- Add FontFamily
+- Add Icon
+- react naitve vector icons
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
