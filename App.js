@@ -1,10 +1,14 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
 import React from 'react';
-import { NativeBaseProvider, Box,Text } from 'native-base';
-import { theme } from './src/assets/theme/theme';
-
+import {NativeBaseProvider, Text, Box} from 'native-base';
 export default function App() {
   return (
-    <NativeBaseProvider theme={theme}>
+    <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
         <Text>Open up App.js to start working on your app!</Text>
       </Box>
