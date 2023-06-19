@@ -27,12 +27,12 @@ export default function FilterScreen() {
         <AppBar />
         <Divider />
         <ScrollView flex={1} px={4} showsHorizontalScrollIndicator={false}>
-          <FilterCard heading={TrendySearch.name} data={TrendySearch.values} />
+          <FilterCard key='-2' heading={TrendySearch.name} data={TrendySearch.values} />
           <PremiumCard />
           <Spacer size={4} />
           <Divider />
           <FilterCard
-            key={-1}
+            key='-1'
             heading={SortBy.name}
             data={SortBy.values}
             onMorePress={() => console.log(SortBy.id)}
@@ -149,7 +149,8 @@ function FilterCard({ heading, onMorePress, data, onItemClear }) {
         {data.map(item => (
           <Chip
             onClear={onItemClear ? () => onItemClear(item.id) : null}
-            colorScheme={item.highlight ? 'info' : 'coolGray'}>
+            colorScheme={item.highlight ? 'info' : 'coolGray'}
+            >
             {item.title}
           </Chip>
         ))}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { NativeBaseProvider, Box, extendTheme } from 'native-base';
 import FilterScreen from './src/screen/filter/filter';
-import DetailScreen from './src/screen/detail/detail';
 export default function App() {
   const theme = extendTheme({
     colors: {
@@ -37,7 +36,6 @@ export default function App() {
             color: 'gray.600',
           }
         }
-
       },
       Button: {
         baseStyle: {
@@ -63,8 +61,8 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
         {/* <Text>Open up App.js to start working on your app!</Text> */}
-        {/* <FilterScreen /> */}
-        <DetailScreen/>
+        <FilterScreen />
+        {/* <DetailScreen/> */}
       </Box>
     </NativeBaseProvider>
   );
