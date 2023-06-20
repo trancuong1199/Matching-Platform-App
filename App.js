@@ -4,13 +4,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import Detail from './src/screen/detail';
 import {customTheme} from './src/constants';
 import BottomTabs from './src/navigations/BottomTabs';
+import Example from './src/screen/detail/detail_second';
+import {NativeBaseProvider} from 'native-base';
 
 const App = () => {
   return (
-    <NavigationContainer>
-    <BottomTabs />
-  </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <BottomTabs />
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
-}
+};
 
-export default App
+export default App;
