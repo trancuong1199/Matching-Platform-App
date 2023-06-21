@@ -3,7 +3,8 @@
 #Library
 -react naitve base(https://nativebase.io/)
 -react-native-safe-area-context
--react-native-svg
+-react-native-svg-
+-npx react-native@latest init GlowCalculator --package-name com.codebusterspro.glowcalculator --title "Glow calculator"
 
 - Add FontFamily
 - Add Icon
