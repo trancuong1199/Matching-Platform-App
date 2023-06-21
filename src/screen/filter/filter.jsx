@@ -1,3 +1,4 @@
+import React, {useContext} from 'react';
 import {
   Button,
   Box,
@@ -16,23 +17,28 @@ import {
   Pressable,
   Image,
 } from 'native-base';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { TrendySearch, SortBy, Filters } from './filterData';
+import {TrendySearch, SortBy, Filters} from './filterData';
+import {NavigationContext} from '@react-navigation/native';
 
 export default function FilterScreen() {
   return (
     <SafeAreaView flex={1}>
-      <Box flex={1}>
+      <Box flex={1} bg="white">
         <AppBar />
         <Divider />
         <ScrollView flex={1} px={4} showsHorizontalScrollIndicator={false}>
-          <FilterCard key='-2' heading={TrendySearch.name} data={TrendySearch.values} />
+          <FilterCard
+            key="-2"
+            heading={TrendySearch.name}
+            data={TrendySearch.values}
+          />
           <PremiumCard />
           <Spacer size={4} />
           <Divider />
           <FilterCard
-            key='-1'
+            key="-1"
             heading={SortBy.name}
             data={SortBy.values}
             onMorePress={() => console.log(SortBy.id)}
@@ -58,6 +64,8 @@ export default function FilterScreen() {
 }
 
 function AppBar() {
+  const navigation = useContext(NavigationContext);
+
   return (
     <HStack
       px="1"
@@ -67,7 +75,7 @@ function AppBar() {
       w="100%">
       <HStack alignItems="center">
         <HStack flex={1}>
-          <IconButton variant={'unstyled'} icon={<CloseIcon />} />
+          <IconButton variant={'unstyled'} icon={<CloseIcon />} onPress={navigation.goBack}/>
         </HStack>
         <Text fontSize="20" fontWeight="medium">
           Filter
@@ -112,8 +120,8 @@ function PremiumCard() {
 function BottomButton() {
   return (
     <HStack px={8} py={4} justifyContent="space-between" alignItems="center">
-      <Link _text={{ fontWeight: '500' }}>Reset all filters</Link>
-      <Button _text={{ fontWeight: '500' }} px={12}>
+      <Link _text={{fontWeight: '500'}}>Reset all filters</Link>
+      <Button _text={{fontWeight: '500'}} px={12}>
         Find
       </Button>
     </HStack>
@@ -134,7 +142,7 @@ function Traits() {
   );
 }
 
-function FilterCard({ heading, onMorePress, data, onItemClear }) {
+function FilterCard({heading, onMorePress, data, onItemClear}) {
   return (
     <VStack py={4} px={2}>
       <HStack justifyContent="space-between" alignItems="center">
@@ -146,11 +154,11 @@ function FilterCard({ heading, onMorePress, data, onItemClear }) {
         ) : null}
       </HStack>
       <HStack flexWrap="wrap" space={3} py={2}>
-        {data.map(item => (
+        {data.map((item, index) => (
           <Chip
+            key={index}
             onClear={onItemClear ? () => onItemClear(item.id) : null}
-            colorScheme={item.highlight ? 'info' : 'coolGray'}
-            >
+            colorScheme={item.highlight ? 'info' : 'coolGray'}>
             {item.title}
           </Chip>
         ))}
@@ -159,7 +167,7 @@ function FilterCard({ heading, onMorePress, data, onItemClear }) {
   );
 }
 
-function Chip({ children, onClear, colorScheme = 'coolGray' }) {
+function Chip({children, onClear, colorScheme = 'coolGray'}) {
   return (
     <Badge
       colorScheme={colorScheme}
