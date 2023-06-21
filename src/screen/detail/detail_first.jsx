@@ -92,7 +92,7 @@ const Detail_First = () => {
           position="absolute"
           w={20}
           alignItems="center"
-          bottom={2}
+          bottom={6}
           right={10}
           justifyContent="space-between">
           <Icon as={Ionicons} name="eye" color="black.50" size="4" />
@@ -237,8 +237,6 @@ const Detail_First = () => {
   };
   return (
     <SafeAreaView>
-      <StatusBar barStyle={'dark-content'} backgroundColor="white" />
-      <ScrollView>
         <View bg="#F8F9FA" position="relative">
           <ComponentHeader />
           <ComponentAvatar />
@@ -262,7 +260,6 @@ const Detail_First = () => {
           <ComponentContent />
           <ComponentPost />
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };
