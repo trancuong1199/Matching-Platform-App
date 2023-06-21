@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  SectionList,
   View,
   Text,
-  useTheme,
   ScrollView,
   Center,
   Heading,
@@ -12,16 +10,20 @@ import {
   Stack,
   Icon,
   Flex,
-  Spacer,
   IconButton,
+  Button,
   Box,
-  Column,
+  Divider,
+  Link,
+  Image,
 } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {Highlight, Total} from './data';
+import {Total, Totals, Totalb} from './data';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function Example() {
@@ -30,42 +32,77 @@ export default function Example() {
       <ScrollView flex={1}>
         {Total.map((item, index) => (
           <Box key={index}>
-            <Title key={index} titles={item.titles} icons={item.icons}  />
-            <Containerbox data={item.data} flag={item.flag}/>
+            <Title key={index} titles={item.titles} icons={item.icons} />
+            <Containerbox data={item.data} flag={item.flag} />
           </Box>
         ))}
+        <Containerchip />
+        <Containerlof />
+        <Divider
+          my="5"
+          _light={{
+            bg: 'muted.500',
+          }}
+          _dark={{
+            bg: 'muted.50',
+          }}
+        />
+        <Buttons />
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-function Title({titles,icons}) {
+function Title({titles, icons}) {
   return (
     <Flex direction="row" m="2">
-      <Icon as={MaterialCommunityIcons} name={icons} size="6" mr="2" />
+      <Icon
+        color="black"
+        as={MaterialCommunityIcons}
+        name={icons}
+        size="6"
+        mr="2"
+      />
       <Heading fontSize="xl">{titles}</Heading>
     </Flex>
   );
 }
 
-function Containerbox({data,flag}) {
+function Containerbox({data, flag}) {
   return (
     <Box>
       {data.map((item, index) => {
         return (
-          <Stack key={index} direction="row" m="3" bg="gray.50">
-            <Icon as={MaterialIcons} name="home-work" size={10} m="4" />
+          <Stack
+            key={index}
+            direction="row"
+            m="3"
+            borderWidth={0.2}
+            borderColor="gray.500"
+            borderRadius={5}
+            bg="gray.100">
+            {/* <Icon  as={MaterialIcons} name="home-work" size="20" m="4" /> */}
+            <Image
+              alt="image building"
+              m="4"
+              size="sm"
+              source={require('../../assets/images/building.png')}
+            />
             <View p="2">
               <Stack direction="row" alignItems="center" space={2}>
                 <Heading key={index} size="xs">
                   {item.title}
                 </Heading>
-                {flag===1?
-                
-                <IconButton
-                  _icon={{as: EvilIcons, name: 'share-apple',color: 'gray',size:'lg'}}
-                />
-                :null}
+                {flag === 1 ? (
+                  <IconButton
+                    _icon={{
+                      as: EvilIcons,
+                      name: 'share-apple',
+                      color: 'gray',
+                      size: 'lg',
+                    }}
+                  />
+                ) : null}
               </Stack>
               {item.content.map((text, index) => {
                 return <Text key={index}>{text}</Text>;
@@ -81,28 +118,144 @@ function Containerbox({data,flag}) {
 function Containerchip() {
   return (
     <Box>
-      {data.map(() => {
+      {Totals.map((item, index) => {
         return (
-          <Stack key={index} direction="row" m="3" bg="gray.50">
-            <Icon as={MaterialIcons} name="home-work" size={10} m="4" />
-            <View p="2">
-              <Stack direction="row" alignItems="center" space={2}>
-                <Heading key={index} size="xs">
-                  {item.title}
-                </Heading>
-                <IconButton
-                  size={5}
-                  variant="solid"
-                  _icon={{as: EvilIcons, name: 'share-apple'}}
-                />
-              </Stack>
-              {item.content.map((text, index) => {
-                return <Text key={index}>{text}</Text>;
-              })}
-            </View>
-          </Stack>
+          <VStack key={index} ml="4" mr="4">
+            <HStack>
+              <Icon
+                color="black"
+                as={MaterialCommunityIcons}
+                name={item.icons}
+                size="6"
+                mr="2"
+              />
+              <Heading fontSize="xl" color={'gray'}>
+                {item.titles}
+              </Heading>
+            </HStack>
+            {item.data.map((item, index) => {
+              return (
+                <HStack key={index} flexWrap={'wrap'} space="4" mb="2" mt="2">
+                  {item.content.map((text, index) => {
+                    return (
+                      <Center mb="2">
+                        <Text bg="white" fontWeight='600' borderRadius={20} px='4' py="2" key={index}>
+                          {text}
+                        </Text>
+                      </Center>
+                    );
+                  })}
+                </HStack>
+              );
+            })}
+          </VStack>
         );
       })}
     </Box>
+  );
+}
+
+function Containerlof() {
+  return (
+    <Box>
+      {Totalb.map((i, index) => {
+        return (
+          <VStack key={index} ml="4" mr="4">
+            <HStack direction="row" alignItems="center" space={2}>
+              <Icon
+                color="black"
+                as={MaterialCommunityIcons}
+                name={i.icons}
+                size="6"
+                mr="2"
+              />
+              <Heading fontSize="xl" color={'gray'}>
+                {i.titles}
+              </Heading>
+            </HStack>
+            {i.data.map((item, index, flag) => {
+              return (
+                <HStack
+                  key={index}
+                  direction="row"
+                  pt="2"
+                  my='3'
+                  borderWidth={0.2}
+                  borderColor="gray.500"
+                  borderRadius={5}
+                  bg="gray.100">
+                    {
+                      item.icon === 'language'?
+                      <Icon
+                        as={FontAwesome}
+                        color='gray.500'
+                        name={item.icon}
+                        size="10"
+                        m="4"
+                      />
+                      :
+                      <Icon
+                      as={MaterialIcons}
+                      color='primary.500'
+                      name={item.icon}
+                      size="10"
+                      m="4"
+                    />
+                    }
+                  <VStack>
+                    <View p="2" mr="16">
+                      <Stack direction="row" alignItems="center">
+                        <Heading key={index} size="xs">
+                          {item.title}
+                        </Heading>
+                      </Stack>
+                      {item.content.map((text, index) => {
+                        return <Text key={index}>{text}</Text>;
+                      })}
+                    </View>
+                  </VStack>
+
+                  {i.flag === 1 ? (
+                    <Link
+                      _text={{
+                        color: 'gray.500',
+                      }}
+                      fontWeight="400">
+                      See more
+                    </Link>
+                  ) : null}
+                </HStack>
+              );
+            })}
+          </VStack>
+        );
+      })}
+    </Box>
+  );
+}
+
+function Buttons() {
+  return (
+    <Stack
+      justifyContent={'center'}
+      pb="5"
+      direction={{
+        base: 'row',
+        md: 'row',
+      }}
+      space={10}>
+      <Button
+        colorScheme="dark"
+        px={10}
+        variant="subtle"
+        leftIcon={<Icon color="white" as={AntDesign} name="close" size="sm" />}>
+        Cancel
+      </Button>
+      <Button
+        px={10}
+        leftIcon={<Icon color="white" as={Entypo} name="hand" size="sm" />}>
+        Match
+      </Button>
+    </Stack>
   );
 }

@@ -92,8 +92,13 @@ export const Licensec = {
   }],
 }
 
+
+export const Total = [Highlight, Experiences, Education, Licensec,]
+
+
+
 export const Interests = {
-  id: 5,
+  id: 1,
   titles: 'Interests',
   icons:'cards-heart',
   flag:0,
@@ -111,7 +116,7 @@ export const Interests = {
 }
 
 export const Purposes = {
-  id: 6,
+  id: 2,
   titles: 'Purposes',
   icons:'target',
   flag:0,
@@ -127,7 +132,7 @@ export const Purposes = {
 }
 
 export const Skill = {
-  id: 7,
+  id: 3,
   titles: 'Skill & Competency',
   flag:0,
   icons:'teddy-bear',
@@ -143,20 +148,24 @@ export const Skill = {
   }],
 }
 
+export const Totals = [ Interests, Purposes, Skill,];
+
 export const Languages = {
-  id: 8,
+  id: 1,
   titles: 'Languages',
   flag:0,
   icons:'earth',
 
     data:[{
     id: 0,
+    icon:'language',
     title: 'Japaner',
     content: [
       'Proficient',
     ]
   }, {
     id: 1,
+    icon:'language',
     title: 'Vietnamese',
     content: [
       'Mother tongue'
@@ -165,17 +174,18 @@ export const Languages = {
 }
 
 export const Traits = {
-  id: 9,
+  id: 2,
   titles: 'Traits',
   icons:'face-recognition',
-  flag:0,
+  flag:1,
+  
   data: [{
     id: 0,
+    icon:'touch-app',
     title: 'INFJ',
     content: [
       'Avocate Personality'
     ]
   }]
 }
-
-export const Total = [Highlight, Experiences, Education, Licensec, Interests, Purposes, Skill, Languages, Traits]
+export const Totalb =[Languages, Traits]

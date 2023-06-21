@@ -5,7 +5,7 @@ import Example from '../detail/detail_second';
 const HomeScreen = () => {
   return (
     <View flex={1}>
-      <Example/>
+      {/* <Example/> */}
     </View>
   );
 };
