@@ -1,13 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screen/home/HomeScreen';
+import Home from '../screen/home';
 import ChatScreen from '../screen/chat/ChatScreen';
 import NotificationScreen from '../screen/notification/NotificationScreen';
 import NetworkScreen from '../screen/network/NetworkScreen';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FilterScreen from '../screen/filter/filter';
+import Detail from '../screen/detail';
+
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
@@ -16,10 +19,9 @@ const BottomTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          position: 'absolute',
-          bottom: 15,
-          left: 15,
-          right: 15,
+          // position: 'absolute',
+          marginBottom: 15,
+          marginHorizontal: 15,
           elevation: 0,
           backgroundColor: '#e7e9ec',
           borderRadius: 18,
@@ -31,7 +33,7 @@ const BottomTabs = () => {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{
           tabBarIcon: ({color, size}) => (
             <AntDesignIcon name="home" color={color} size={size} />
@@ -40,7 +42,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name="Chat"
-        component={ChatScreen}
+        component={FilterScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <AntDesignIcon name="message1" color={color} size={size} />
@@ -49,7 +51,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name="Notification"
-        component={NotificationScreen}
+        component={Detail}
         options={{
           tabBarIcon: ({color, size}) => (
             <Ionicons name="notifications-outline" color={color} size={size} />

@@ -1,6 +1,7 @@
-import React from 'react';
-import {SafeAreaView, Dimensions, StyleSheet, ScrollView} from 'react-native';
-import {View, Avatar, HStack, Divider, Box} from 'native-base';
+import React, {useContext} from 'react';
+import {Dimensions, StyleSheet, ScrollView} from 'react-native';
+import {View, Avatar, HStack, Divider, Box, Pressable} from 'native-base';
+import {NavigationContext} from '@react-navigation/native';
 
 import Chip from '../../components/Chip/Chip';
 import {chipData, historyDetailData} from '../../Services/Data/homeData';
@@ -12,18 +13,22 @@ import {InputSearch} from '../../components/Input';
 
 // HomeHeader: avatar, search input, filter location
 function HomeHeader() {
+  const navigation = useContext(NavigationContext);
   const heightScreen = Dimensions.get('window').height;
   const heightScreenHeader = (heightScreen / 100) * 8;
+
   return (
     <HStack
       justifyContent="space-between"
       alignItems="center"
       h={heightScreenHeader}>
-      <Avatar
-        size={8}
-        source={{
-          uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-        }}></Avatar>
+      <Pressable onPress={() => navigation.navigate('Detail')}>
+        <Avatar
+          size={8}
+          source={{
+            uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+          }}></Avatar>
+      </Pressable>
       <InputSearch
         placeholder="Search skill, people, title..."
         iconSearch="search-outline"
@@ -42,7 +47,7 @@ function Home() {
   const heightScreenFooter = (heightScreen / 100) * 15;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Box style={styles.container} bg="white">
       {/* Header */}
       <HomeHeader />
 
@@ -75,7 +80,7 @@ function Home() {
           </HStack>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </Box>
   );
 }
 

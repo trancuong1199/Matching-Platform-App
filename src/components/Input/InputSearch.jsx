@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Icon, Input, IconButton} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {NavigationContext} from '@react-navigation/native';
 
 // Render placeholder, icons
 export function InputSearch(props) {
+  const navigation = useContext(NavigationContext);
   return (
     <Input
       w={{
@@ -36,6 +38,8 @@ export function InputSearch(props) {
               color="black"
             />
           }
+          onPress={() => navigation.navigate('FilterScreen')}
+
         />
       }
     />

@@ -26,6 +26,10 @@ export const theme = extendTheme({
       800: "#005885",
       900: "#313742" //OK
     },
+    black: {
+      50: '#898E9A',
+      100: '#000',
+    },
   },
   components: {
     Link: {

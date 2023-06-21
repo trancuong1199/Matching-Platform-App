@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Text,
   Image,
@@ -12,20 +12,20 @@ import {
   Link,
   AspectRatio,
   Box,
+  IconButton,
 } from 'native-base';
+import {NavigationContext} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
-  Dimensions,
   ScrollView,
 } from 'react-native';
 const Detail_First = () => {
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-  const componentText = (text, comment, flag) => {
+  const navigation = useContext(NavigationContext);
+  const ComponentText = (text, comment, flag) => {
     return (
       <View alignItems="center">
         <Text fontSize="sm">{text}</Text>
@@ -45,7 +45,7 @@ const Detail_First = () => {
       </View>
     );
   };
-  const imagePost = () => {
+  const ImagePost = () => {
     return (
       <HStack w={200} h={200} mr={2}>
         <Image
@@ -60,7 +60,7 @@ const Detail_First = () => {
       </HStack>
     );
   };
-  const componentHeader = () => {
+  const ComponentHeader = () => {
     return (
       <Box>
         <AspectRatio ratio={6 / 3} width="100%">
@@ -72,14 +72,21 @@ const Detail_First = () => {
             alt="Alternate Text"
           />
         </AspectRatio>
-        <CloseIcon
+        <HStack
+          alignItems="center"
           position="absolute"
-          top={6}
-          left={6}
-          size="5"
-          mt="0.5"
-          color="black.50"
-        />
+          mt="4"
+          w="100%"
+          px="4"
+          justifyContent="space-between">
+          <IconButton onPress={navigation.goBack} icon={<CloseIcon size="5" color="black.50" />} p="0" />
+          <Icon
+            name="dots-horizontal"
+            as={MaterialCommunityIcons}
+            size="8"
+            color="black.50"
+          />
+        </HStack>
         <HStack
           space={2}
           position="absolute"
@@ -95,9 +102,9 @@ const Detail_First = () => {
       </Box>
     );
   };
-  const componentAvatar = () => {
+  const ComponentAvatar = () => {
     return (
-      <HStack mx={6} justifyContent="space-around" alignItems="center" mt={-6}>
+      <HStack mx={6} justifyContent="space-around" alignItems="center" mt="-5%">
         <VStack>
           <Avatar
             borderWidth={4}
@@ -120,13 +127,13 @@ const Detail_First = () => {
             </Avatar.Badge>
           </Avatar>
         </VStack>
-        <VStack>{componentText('100K', 'Interests')}</VStack>
-        <VStack>{componentText('100', 'Matches')}</VStack>
-        <VStack>{componentText('10', 'Endorsements', 'underline')}</VStack>
+        <VStack>{ComponentText('100K', 'Interests')}</VStack>
+        <VStack>{ComponentText('100', 'Matches')}</VStack>
+        <VStack>{ComponentText('10', 'Endorsements', 'underline')}</VStack>
       </HStack>
     );
   };
-  const componentInfo = () => {
+  const ComponentInfo = () => {
     return (
       <>
         <VStack mx={6} mt={2} space={1}>
@@ -171,7 +178,7 @@ const Detail_First = () => {
       </>
     );
   };
-  const componentContent = () => {
+  const ComponentContent = () => {
     return (
       <View
         h={250}
@@ -199,7 +206,7 @@ const Detail_First = () => {
       </View>
     );
   };
-  const componentPost = () => {
+  const ComponentPost = () => {
     return (
       <>
         <HStack
@@ -220,9 +227,9 @@ const Detail_First = () => {
         </HStack>
         <HStack ml={6} mr={4} my={2}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {imagePost()}
-            {imagePost()}
-            {imagePost()}
+            <ImagePost />
+            <ImagePost />
+            <ImagePost />
           </ScrollView>
         </HStack>
       </>
@@ -230,16 +237,12 @@ const Detail_First = () => {
   };
   return (
     <SafeAreaView>
-      <StatusBar
-        translucent
-        barStyle={'dark-content'}
-        backgroundColor="transparent"
-      />
+      <StatusBar barStyle={'dark-content'} backgroundColor="white" />
       <ScrollView>
         <View bg="#F8F9FA" position="relative">
-          {componentHeader()}
-          {componentAvatar()}
-          {componentInfo()}
+          <ComponentHeader />
+          <ComponentAvatar />
+          <ComponentInfo />
           <HStack
             h={10}
             mx={6}
@@ -256,8 +259,8 @@ const Detail_First = () => {
               </Radio>
             </Radio.Group>
           </HStack>
-          {componentContent()}
-          {componentPost()}
+          <ComponentContent />
+          <ComponentPost />
         </View>
       </ScrollView>
     </SafeAreaView>

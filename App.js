@@ -1,45 +1,24 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-<<<<<<< HEAD
+import React, {useRef} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Detail from './src/screen/detail';
-import {customTheme} from './src/constants';
+import {NativeBaseProvider} from 'native-base';
+import {theme} from './src/assets/theme/theme';
 import BottomTabs from './src/navigations/BottomTabs';
+import {SafeAreaView} from 'react-native';
+import {NavigationContext} from '@react-navigation/native';
+import RootStack from './src/navigations/RootStack';
 
 const App = () => {
-  return (
-    <NavigationContainer>
-    <BottomTabs />
-  </NavigationContainer>
-=======
-import {NativeBaseProvider, Box, extendTheme} from 'native-base';
-import Home from './src/screen/home';
-
-export default function App() {
-  const theme = extendTheme({
-      components: {
-        Badge: {
-          defaultProps: {
-            alignSelf: "center",
-            rounded: 'full',
-            variant: "subtle",
-            colorScheme: 'coolGray',
-            px: 3,
-            py: 1.5,
-            my: 2,
-          }
-        },
-      }
-  })
+  const navigationRef = useRef(null);
 
   return (
     <NativeBaseProvider theme={theme}>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <Home />
-      </Box>
+      <NavigationContainer>
+        <SafeAreaView style={{flex: 1}}>
+          <RootStack />
+        </SafeAreaView>
+      </NavigationContainer>
     </NativeBaseProvider>
->>>>>>> feature/home
   );
-}
+};
 
-export default App
+export default App;
