@@ -1,17 +1,21 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useRef} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Detail from './src/screen/detail';
-import {customTheme} from './src/constants';
-import BottomTabs from './src/navigations/BottomTabs';
-import Example from './src/screen/detail/detail_second';
 import {NativeBaseProvider} from 'native-base';
+import {theme} from './src/assets/theme/theme';
+import BottomTabs from './src/navigations/BottomTabs';
+import {SafeAreaView} from 'react-native';
+import {NavigationContext} from '@react-navigation/native';
+import RootStack from './src/navigations/RootStack';
 
 const App = () => {
+  const navigationRef = useRef(null);
+
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <BottomTabs />
+        <SafeAreaView style={{flex: 1}}>
+          <RootStack />
+        </SafeAreaView>
       </NavigationContainer>
     </NativeBaseProvider>
   );

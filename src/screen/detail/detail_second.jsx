@@ -26,10 +26,11 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {Total, Totals, Totalb} from './data';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-export default function Example() {
+export default function DetailSecond() {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ScrollView flex={1}>
+      <Box bg='#F8F9FA' mt='6'>
+
         {Total.map((item, index) => (
           <Box key={index}>
             <Title key={index} titles={item.titles} icons={item.icons} />
@@ -48,7 +49,7 @@ export default function Example() {
           }}
         />
         <Buttons />
-      </ScrollView>
+      </Box>
     </SafeAreaView>
   );
 }
@@ -57,7 +58,7 @@ function Title({titles, icons}) {
   return (
     <Flex direction="row" m="2">
       <Icon
-        color="black"
+        color="black.100"
         as={MaterialCommunityIcons}
         name={icons}
         size="6"
@@ -123,7 +124,7 @@ function Containerchip() {
           <VStack key={index} ml="4" mr="4">
             <HStack>
               <Icon
-                color="black"
+                color="black.100"
                 as={MaterialCommunityIcons}
                 name={item.icons}
                 size="6"
@@ -163,7 +164,7 @@ function Containerlof() {
           <VStack key={index} ml="4" mr="4">
             <HStack direction="row" alignItems="center" space={2}>
               <Icon
-                color="black"
+                color="black.100"
                 as={MaterialCommunityIcons}
                 name={i.icons}
                 size="6"
