@@ -2,8 +2,6 @@ import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screen/home';
-import ChatScreen from '../screen/chat/ChatScreen';
-import NotificationScreen from '../screen/notification/NotificationScreen';
 import NetworkScreen from '../screen/network/NetworkScreen';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -27,9 +25,10 @@ const BottomTabs = () => {
           borderRadius: 18,
           height: 70,
         },
-        tabBarLabelStyle: {fontSize: 14},
+        // tabBarBackground: () => <View w='100%' h={70} bg='white'/>,
+        // tabBarLabelStyle: {fontSize: 14},
         tabBarActiveTintColor: '#4cafbe',
-        tabBarItemStyle: {padding: 10},
+        // tabBarItemStyle: {padding: 10},
       }}>
       <Tab.Screen
         name="Home"

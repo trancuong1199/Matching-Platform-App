@@ -24,42 +24,40 @@ import {NavigationContext} from '@react-navigation/native';
 
 export default function FilterScreen() {
   return (
-    <SafeAreaView flex={1}>
-      <Box flex={1} bg="white">
-        <AppBar />
+    <Box flex={1} bg="white">
+      <AppBar />
+      <Divider />
+      <ScrollView flex={1} px={4} showsHorizontalScrollIndicator={false}>
+        <FilterCard
+          key="-2"
+          heading={TrendySearch.name}
+          data={TrendySearch.values}
+        />
+        <PremiumCard />
+        <Spacer size={4} />
         <Divider />
-        <ScrollView flex={1} px={4} showsHorizontalScrollIndicator={false}>
+        <FilterCard
+          key="-1"
+          heading={SortBy.name}
+          data={SortBy.values}
+          onMorePress={() => console.log(SortBy.id)}
+          onItemClear={id => console.log(id)}
+        />
+        <Divider />
+        {Filters.map((item, index) => (
           <FilterCard
-            key="-2"
-            heading={TrendySearch.name}
-            data={TrendySearch.values}
-          />
-          <PremiumCard />
-          <Spacer size={4} />
-          <Divider />
-          <FilterCard
-            key="-1"
-            heading={SortBy.name}
-            data={SortBy.values}
-            onMorePress={() => console.log(SortBy.id)}
+            key={index}
+            heading={item.name}
+            data={item.values}
+            onMorePress={() => console.log(item.id)}
             onItemClear={id => console.log(id)}
           />
-          <Divider />
-          {Filters.map((item, index) => (
-            <FilterCard
-              key={index}
-              heading={item.name}
-              data={item.values}
-              onMorePress={() => console.log(item.id)}
-              onItemClear={id => console.log(id)}
-            />
-          ))}
-          <Traits />
-        </ScrollView>
-        <Divider />
-        <BottomButton />
-      </Box>
-    </SafeAreaView>
+        ))}
+        <Traits />
+      </ScrollView>
+      <Divider />
+      <BottomButton />
+    </Box>
   );
 }
 
@@ -75,7 +73,11 @@ function AppBar() {
       w="100%">
       <HStack alignItems="center">
         <HStack flex={1}>
-          <IconButton variant={'unstyled'} icon={<CloseIcon />} onPress={navigation.goBack}/>
+          <IconButton
+            variant={'unstyled'}
+            icon={<CloseIcon />}
+            onPress={navigation.goBack}
+          />
         </HStack>
         <Text fontSize="20" fontWeight="medium">
           Filter
