@@ -22,7 +22,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import EvilIcons from 'react-native-vector-icons/EvillIcons';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {Total, Totals, Totalb} from './data';
 import {SafeAreaView} from 'react-native-safe-area-context';
 

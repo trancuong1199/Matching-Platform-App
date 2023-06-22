@@ -6,8 +6,7 @@ import DetailSecond from './detail_second';
 const Detail = () => {
   return (
     <SafeAreaView>
-      <ScrollView>
-
+      <ScrollView showsVerticalScrollIndicator={false}>
       <Detail_First />
       <DetailSecond />
       </ScrollView>
