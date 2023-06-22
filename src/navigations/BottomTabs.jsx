@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screen/home';
@@ -17,18 +17,19 @@ const BottomTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          // position: 'absolute',
-          marginBottom: 15,
-          marginHorizontal: 15,
+          position: 'absolute',
+          left: 15,
+          bottom: 15,
+          right: 15,
           elevation: 0,
           backgroundColor: '#e7e9ec',
           borderRadius: 18,
           height: 70,
         },
-        // tabBarBackground: () => <View w='100%' h={70} bg='white'/>,
-        // tabBarLabelStyle: {fontSize: 14},
+        tabBarBackground: () => <View w='100%' h={70} bg='white'/>,
+        tabBarLabelStyle: {fontSize: 14},
         tabBarActiveTintColor: '#4cafbe',
-        // tabBarItemStyle: {padding: 10},
+        tabBarItemStyle: {padding: 10},
       }}>
       <Tab.Screen
         name="Home"

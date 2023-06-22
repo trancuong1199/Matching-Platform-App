@@ -14,14 +14,9 @@ import {InputSearch} from '../../components/Input';
 // HomeHeader: avatar, search input, filter location
 function HomeHeader() {
   const navigation = useContext(NavigationContext);
-  const heightScreen = Dimensions.get('window').height;
-  const heightScreenHeader = (heightScreen / 100) * 8;
 
   return (
-    <HStack
-      justifyContent="space-between"
-      alignItems="center"
-      h={heightScreenHeader}>
+    <HStack justifyContent="space-between" alignItems="center" space={2} py="2">
       <Pressable onPress={() => navigation.navigate('Detail')}>
         <Avatar
           size={8}
@@ -41,11 +36,6 @@ function HomeHeader() {
 
 // Home main
 function Home() {
-  const heightScreen = Dimensions.get('window').height;
-  const heightScreenContent = (heightScreen / 100) * 60;
-  const heightScreenHistory = (heightScreen / 100) * 17;
-  const heightScreenFooter = (heightScreen / 100) * 15;
-
   return (
     <Box style={styles.container} bg="white">
       {/* Header */}
@@ -53,32 +43,29 @@ function Home() {
 
       {/* Content */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Box h={heightScreenContent}>
-          <ImageCarousel />
-        </Box>
-        <View h={heightScreenHistory}>
-          <Divider h={1} mb="2" bg="gray.200" />
+        <ImageCarousel />
+        <Divider h={1} bg="gray.200" />
+        <Box py="4">
           <BoxTitle titleName="My Biography" />
           {historyDetailData.map((value, index) => (
             <HistoryDetail
               historyDetailContent={value}
-              seeMore={value}
               key={index}
               colorSeeMore="coolGray.400"
             />
           ))}
-          <Divider h={1} my="2" bg="gray.200" />
-        </View>
+        </Box>
+        <Divider h={1} bg="gray.200" />
 
         {/* Footer */}
-        <View h={heightScreenFooter} mt="2">
+        <Box py="4" mb="20">
           <BoxTitle titleName="Insterests" />
           <HStack flexWrap="wrap" space={2}>
             {chipData.map((value, index) => (
               <Chip my="1" key={index} title={value} fontSize="md" />
             ))}
           </HStack>
-        </View>
+        </Box>
       </ScrollView>
     </Box>
   );

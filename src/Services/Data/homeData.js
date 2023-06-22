@@ -7,8 +7,8 @@ export const chipData = [
   'Generative AI',
 ];
 export const historyDetailData = [
-  '- In my career so far, I have often been involved in market development ',
-  '- Japanese subsidiaries of venture companies and foreign-affiliatedd during start-up',
+  '- In my career so far, I have often been involved in market development Japanese subsidiaries of venture companies',
+  '- Japanese subsidiaries of venture companies and foreign-affiliatedd during start-up I have often been involved in market development',
 ];
 export const contentData = [
   {

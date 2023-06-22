@@ -8,16 +8,15 @@ export function LocationSelect() {
   const [location, setLocation] = useState('');
 
   return (
-    <Box maxW="300">
       <Select
         selectedValue={location}
-        placeholderTextColor="black"
         fontSize="sm"
         width="90"
         p="0"
-        textAlign="center"
+        textAlign='center'
         borderWidth="0"
         placeholder="Location"
+        placeholderTextColor="text.600"
         dropdownIcon={
           <Icon
             as={<Ionicons name="chevron-down-outline" />}
@@ -38,7 +37,6 @@ export function LocationSelect() {
           />
         ))}
       </Select>
-    </Box>
   );
 }
 

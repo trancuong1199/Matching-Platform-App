@@ -1,24 +1,23 @@
 import React, {useRef} from 'react';
-import {
-  View,
-  Icon,
-  Row,
-} from 'native-base';
+import {Dimensions} from 'react-native';
+import {View, Icon, Row} from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-deck-swiper';
 
-import {
-  contentData,
-} from '../../Services/Data/homeData';
+import {contentData} from '../../Services/Data/homeData';
 import {ImageSlider} from '../Slider';
 
 // Carousel
 export function ImageCarousel() {
-    const swiperRef = useRef();
-  
-    return (
-      <View justifyContent="center" alignItems="center">
+  const swiperRef = useRef();
+  const heightScreen = Dimensions.get('window').height;
+  const heightScreenContent = (heightScreen / 100) * 60;
+
+  return (
+    <>
+      <View h={heightScreenContent} w="100%">
         <Swiper
+          position="relative"
           ref={swiperRef}
           cards={contentData}
           infinite
@@ -79,30 +78,30 @@ export function ImageCarousel() {
             },
           }}
         />
-  
-        <Row
-          flexDirection="row"
-          justifyContent="space-around"
-          width="100%"
-          top="108%"
-          px="60">
-          <Icon
-            as={<MaterialCommunityIcons name="close-circle-outline" />}
-            size="4xl"
-            color="red.600"
-            onPress={() => swiperRef.current.swipeLeft()}
-          />
-          <Icon
-            size="4xl"
-            color="green.500"
-            as={<MaterialCommunityIcons name="hand-wave-outline" />}
-            style={{
-              transform: [{rotate: '290deg'}],
-            }}
-            onPress={() => swiperRef.current.swipeRight()}
-          />
-        </Row>
       </View>
-    );
-  }
 
+      <Row
+        flexDirection="row"
+        justifyContent="space-around"
+        width="100%"
+        py="3"
+        px="60">
+        <Icon
+          as={<MaterialCommunityIcons name="close-circle-outline" />}
+          size="4xl"
+          color="red.600"
+          onPress={() => swiperRef.current.swipeLeft()}
+        />
+        <Icon
+          size="4xl"
+          color="green.500"
+          as={<MaterialCommunityIcons name="hand-wave-outline" />}
+          style={{
+            transform: [{rotate: '290deg'}],
+          }}
+          onPress={() => swiperRef.current.swipeRight()}
+        />
+      </Row>
+    </>
+  );
+}

@@ -8,9 +8,7 @@ export function InputSearch(props) {
   const navigation = useContext(NavigationContext);
   return (
     <Input
-      w={{
-        base: '240',
-      }}
+      flex="1"
       size="md"
       variant="rounded"
       bg="coolGray.200"

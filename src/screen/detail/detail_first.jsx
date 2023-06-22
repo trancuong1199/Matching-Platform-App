@@ -17,10 +17,12 @@ import {
 import {NavigationContext} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {StyleSheet, SafeAreaView, StatusBar, ScrollView} from 'react-native';
+import {StyleSheet, SafeAreaView, ScrollView, Dimensions} from 'react-native';
 const Detail_First = () => {
+  const widthScreen = Dimensions.get('window').width;
+  const heightAvatar=widthScreen/6*3;
   const navigation = useContext(NavigationContext);
-  const ComponentText = (text, comment, flag) => {
+  const ComponentText = ({text, comment, flag}) => {
     return (
       <View alignItems="center">
         <Text fontSize="sm">{text}</Text>
@@ -57,11 +59,11 @@ const Detail_First = () => {
   };
   const ComponentHeader = () => {
     return (
-      <Box>
+      <Box h={heightAvatar} >
         <AspectRatio ratio={6 / 3} width="100%">
           <Image
             resizeMode="cover"
-            h={200}
+            h={heightAvatar}
             w="100%"
             source={require('../../assets/images/header_detail.png')}
             alt="Alternate Text"
@@ -103,7 +105,7 @@ const Detail_First = () => {
   };
   const ComponentAvatar = () => {
     return (
-      <HStack mx={6} justifyContent="space-around" alignItems="center" mt="-3">
+      <HStack mx={6} position='absolute' top={heightAvatar-heightAvatar*0.1} justifyContent="space-around" alignItems='center' >
         <Avatar
           borderWidth={4}
           borderColor="primary.600"
@@ -120,10 +122,10 @@ const Detail_First = () => {
             <Icon as={MaterialCommunityIcons} name="hand-wave" color="white" />
           </Avatar.Badge>
         </Avatar>
-        <HStack mt='5%' justifyContent="space-evenly" flex={1}>
-          <VStack>{ComponentText('100K', 'Interests')}</VStack>
-          <VStack>{ComponentText('100', 'Matches')}</VStack>
-          <VStack>{ComponentText('10', 'Endorsements', 'underline')}</VStack>
+        <HStack justifyContent="space-evenly" flex={1}  >
+          <ComponentText text="100K" comment="Interests" />
+          <ComponentText text="100" comment="Matches" />
+          <ComponentText text="10" comment="Endorsements" flag="underline" />
         </HStack>
       </HStack>
     );
@@ -131,7 +133,7 @@ const Detail_First = () => {
   const ComponentInfo = () => {
     return (
       <>
-        <VStack mx={6} mt={2} space={1}>
+        <VStack mx={6} mt={20} space={1}>
           <Text fontWeight="bold" fontSize="xl">
             Mark Dao
           </Text>
@@ -232,7 +234,7 @@ const Detail_First = () => {
   };
   return (
     <SafeAreaView>
-      <View bg="#F8F9FA" position="relative">
+      <View bg="#F8F9FA" position="relative" flex={1}>
         <ComponentHeader />
         <ComponentAvatar />
         <ComponentInfo />

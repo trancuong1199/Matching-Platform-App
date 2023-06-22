@@ -17,7 +17,6 @@ import {
   Pressable,
   Image,
 } from 'native-base';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {TrendySearch, SortBy, Filters} from './filterData';
 import {NavigationContext} from '@react-navigation/native';
