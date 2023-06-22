@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {Dimensions} from 'react-native';
 import {View, Icon, Row} from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -12,12 +12,11 @@ export function ImageCarousel() {
   const swiperRef = useRef();
   const heightScreen = Dimensions.get('window').height;
   const heightScreenContent = (heightScreen / 100) * 60;
-
+  
   return (
     <>
-      <View h={heightScreenContent} w="100%">
+      <View h={heightScreenContent}>
         <Swiper
-          position="relative"
           ref={swiperRef}
           cards={contentData}
           infinite
@@ -81,9 +80,7 @@ export function ImageCarousel() {
       </View>
 
       <Row
-        flexDirection="row"
         justifyContent="space-around"
-        width="100%"
         py="3"
         px="60">
         <Icon

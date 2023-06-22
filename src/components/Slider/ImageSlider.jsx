@@ -13,7 +13,7 @@ import {
 } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { ImageDetail } from '../Detail';
+import {ImageDetail} from '../Detail';
 
 // Render information of users (images, name, position, stars, followers)
 export function ImageSlider(props) {
@@ -82,56 +82,62 @@ export function ImageSlider(props) {
       overflow="hidden"
       w={widthScreen - 20}
       h={heightScreenContent}
-      top="-60" left="-20"
-      space={5}>
-      <Box rounded="xl" overflow="hidden">
-        <ScrollView
-          horizontal
-          pagingEnabled
-          ref={sliderRef}
-          scrollEnabled={false}
-          showsHorizontalScrollIndicator={false}
-          onScroll={onScrollToGetIndex}>
-          {props.images.map((image, index) => {
-            return (
-              <Box key={index}>
-                <Image source={image} h="100%" w={widthScreen} alt="image" />
-                <HandleProgress arrImages={props.images} />
-                <ImageDetail stars={props.stars} followers={props.followers}/>
-              </Box>
-            );
-          })}
-        </ScrollView>
-        <Row position="absolute" top="0" left="0" right="0" bottom="0">
-          <Pressable flex="1" onPress={onPrevious} />
-          <Pressable flex="1" onPress={onNext} />
-        </Row>
-        <Center
-          position="absolute"
-          left="0"
-          right="0"
-          bottom="0"
-          bg="rgba(0, 0, 0, 0.5)"
-          py="2"
-          px="3"
-          alignItems="flex-start"
-          w="100%">
-          <HStack alignItems="center">
-            <Text fontSize="xl" color="white" fontWeight="700">
-              {props.name}
-            </Text>
-            <Icon
-              as={<Ionicons name="checkmark-outline" />}
-              size="md"
-              color="white"
-              rounded="full"
-              bg="info.500"
-              ml="3"
-            />
-          </HStack>
-          <Text color="white">{props.position}</Text>
-        </Center>
-      </Box>
+      top="-60"
+      left="-20">
+      <ScrollView
+        horizontal
+        pagingEnabled
+        ref={sliderRef}
+        scrollEnabled={false}
+        showsHorizontalScrollIndicator={false}
+        onScroll={onScrollToGetIndex}>
+        {props.images.map((image, index) => {
+          return (
+            <Box key={index}>
+              <Image source={image} h="100%" w={widthScreen} alt="image" />
+              <HandleProgress arrImages={props.images} />
+              <Center
+                position="absolute"
+                alignItems="flex-start"
+                px="3"
+                pt="6"
+                w="100%">
+                <ImageDetail iconStar='star' stars={props.stars}/>
+                <ImageDetail iconPerson='person' followers={props.followers} />
+              </Center>
+            </Box>
+          );
+        })}
+      </ScrollView>
+      <Row position="absolute" top="0" left="0" right="0" bottom="0">
+        <Pressable flex="1" onPress={onPrevious} />
+        <Pressable flex="1" onPress={onNext} />
+      </Row>
+      <Center
+        position="absolute"
+        left="0"
+        right="0"
+        bottom="0"
+        bg="rgba(0, 0, 0, 0.5)"
+        py="2"
+        px="3"
+        alignItems="flex-start"
+        w="100%">
+        <HStack alignItems="center">
+          <Text fontSize="xl" color="white" fontWeight="700">
+            {props.name}
+          </Text>
+          <Icon
+            as={<Ionicons name="checkmark-outline" />}
+            size="md"
+            color="white"
+            rounded="full"
+            bg="info.500"
+            ml="3"
+          />
+        </HStack>
+        <Text color="white">{props.position}</Text>
+      </Center>
     </VStack>
   );
 }
