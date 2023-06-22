@@ -7,8 +7,8 @@ const Detail = () => {
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <Detail_First />
-      <DetailSecond />
+        <Detail_First />
+        <DetailSecond />
       </ScrollView>
     </SafeAreaView>
   );

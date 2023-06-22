@@ -28,26 +28,24 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function DetailSecond() {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Box bg="#F8F9FA" mt="6">
-        {Total.map((item, index) => (
-          <Box key={index}>
-            <Title key={index} titles={item.titles} icons={item.icons} />
-            <Containerbox data={item.data} flag={item.flag} />
-          </Box>
-        ))}
-        <Containerchip />
-        <Containerlof />
-        <Divider my="5" bg="muted.50" />
-        <Buttons />
-      </Box>
-    </SafeAreaView>
+    <Box bg="#F8F9FA" pt="6">
+      {Total.map((item, index) => (
+        <Box key={index}>
+          <Title key={index} titles={item.titles} icons={item.icons} />
+          <Containerbox data={item.data} flag={item.flag} />
+        </Box>
+      ))}
+      <Containerchip />
+      <Containerlof />
+      <Divider my="5" bg="gray.300" />
+      <Buttons />
+    </Box>
   );
 }
 
 function Title({titles, icons}) {
   return (
-    <Flex direction="row" m="2">
+    <Flex direction="row" my="2" mx="6">
       <Icon
         color="black.100"
         as={MaterialCommunityIcons}
@@ -68,7 +66,8 @@ function Containerbox({data, flag}) {
           <Stack
             key={index}
             direction="row"
-            m="3"
+            my="2"
+            mx="6"
             borderWidth={0.2}
             borderColor="gray.500"
             borderRadius={5}
@@ -90,7 +89,7 @@ function Containerbox({data, flag}) {
                     _icon={{
                       as: EvilIcons,
                       name: 'share-apple',
-                      color: 'gray',
+                      color: 'gray.300',
                       size: 'lg',
                     }}
                   />
@@ -112,7 +111,7 @@ function Containerchip() {
     <Box>
       {Totals.map((item, index) => {
         return (
-          <VStack key={index} ml="4" mr="4">
+          <VStack key={index} mx="6">
             <HStack>
               <Icon
                 color="black.100"
@@ -127,16 +126,23 @@ function Containerchip() {
             </HStack>
             {item.data.map((item, index) => {
               return (
-                <HStack key={index} flexWrap={'wrap'} space="4" mb="2" mt="2">
+                <HStack key={index} flexWrap={'wrap'} space="2" my="2">
                   {item.content.map((text, index) => {
                     return (
                       <Center key={index} mb="2">
                         <Text
                           bg="white"
                           fontWeight="600"
+                          borderWidth={0.2}
+                          borderColor="gray.300"
                           borderRadius={20}
                           px="4"
                           py="2"
+                          shadowColor="gray.500"
+                          shadowOffset={{width: 0, height: 2}}
+                          shadowOpacity={0.3}
+                          shadowRadius={4}
+                          elevation={4}
                           key={index}>
                           {text}
                         </Text>
@@ -158,7 +164,7 @@ function Containerlof() {
     <Box>
       {Totalb.map((i, index) => {
         return (
-          <VStack key={index} ml="4" mr="4">
+          <VStack key={index} mx="6">
             <HStack direction="row" alignItems="center" space={2}>
               <Icon
                 color="black.100"
@@ -180,7 +186,7 @@ function Containerlof() {
                   borderWidth={0.2}
                   borderColor="gray.500"
                   borderRadius={5}
-                  alignItems='center'
+                  alignItems="center"
                   bg="gray.100">
                   <Icon
                     as={item.icon === 'language' ? FontAwesome : MaterialIcons}
@@ -231,15 +237,33 @@ function Buttons() {
       }}
       space={10}>
       <Button
-        colorScheme="dark"
+        shadowColor="gray.500"
+        shadowOffset={{width: 0, height: 2}}
+        shadowOpacity={0.3}
+        shadowRadius={4}
+        elevation={4}
+        bg="gray.400"
+        color="white"
         px={10}
         variant="subtle"
         leftIcon={<Icon color="white" as={AntDesign} name="close" size="sm" />}>
-        Cancel
+        <Text color="white">Cancel</Text>
       </Button>
       <Button
+        shadowColor="gray.500"
+        shadowOffset={{width: 0, height: 2}}
+        shadowOpacity={0.3}
+        shadowRadius={4}
+        elevation={4}
         px={10}
-        leftIcon={<Icon color="white" as={Entypo} name="hand" size="sm" />}>
+        leftIcon={
+          <Icon
+            color="white"
+            as={MaterialCommunityIcons}
+            name="hand-wave-outline"
+            size="sm"
+          />
+        }>
         Match
       </Button>
     </Stack>

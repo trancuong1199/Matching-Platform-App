@@ -17,10 +17,16 @@ import {
 import {NavigationContext} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {StyleSheet, SafeAreaView, ScrollView, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Dimensions,
+  FlatList,
+} from 'react-native';
 const Detail_First = () => {
   const widthScreen = Dimensions.get('window').width;
-  const heightAvatar=widthScreen/6*3;
+  const heightAvatar = (widthScreen / 6) * 3;
   const navigation = useContext(NavigationContext);
   const ComponentText = ({text, comment, flag}) => {
     return (
@@ -44,7 +50,7 @@ const Detail_First = () => {
   };
   const ImagePost = () => {
     return (
-      <HStack w={200} h={200} mr={2}>
+      <HStack w={200} h={200}>
         <Image
           resizeMode="cover"
           alt="Alternate Text"
@@ -59,7 +65,7 @@ const Detail_First = () => {
   };
   const ComponentHeader = () => {
     return (
-      <Box h={heightAvatar} >
+      <Box h={heightAvatar}>
         <AspectRatio ratio={6 / 3} width="100%">
           <Image
             resizeMode="cover"
@@ -105,7 +111,12 @@ const Detail_First = () => {
   };
   const ComponentAvatar = () => {
     return (
-      <HStack mx={6} position='absolute' top={heightAvatar-heightAvatar*0.1} justifyContent="space-around" alignItems='center' >
+      <HStack
+        mx={6}
+        position="absolute"
+        top={heightAvatar - heightAvatar * 0.1}
+        justifyContent="space-around"
+        alignItems="center">
         <Avatar
           borderWidth={4}
           borderColor="primary.600"
@@ -122,7 +133,7 @@ const Detail_First = () => {
             <Icon as={MaterialCommunityIcons} name="hand-wave" color="white" />
           </Avatar.Badge>
         </Avatar>
-        <HStack justifyContent="space-evenly" flex={1}  >
+        <HStack justifyContent="space-evenly" flex={1}>
           <ComponentText text="100K" comment="Interests" />
           <ComponentText text="100" comment="Matches" />
           <ComponentText text="10" comment="Endorsements" flag="underline" />
@@ -179,7 +190,7 @@ const Detail_First = () => {
     return (
       <View
         h={250}
-        mx={5}
+        mx={6}
         bg="white"
         borderWidth={1}
         borderRadius={6}
@@ -222,12 +233,15 @@ const Detail_First = () => {
           </HStack>
           <Link _text={{color: 'black.50', fontSize: 'sm'}}>Match to see</Link>
         </HStack>
-        <HStack ml={6} mr={4} my={2}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <ImagePost />
-            <ImagePost />
-            <ImagePost />
-          </ScrollView>
+        <HStack mx={6} my={2}>
+          <FlatList
+            data={Array.from({length: 3}, (_, index) => index)}
+            renderItem={({item}) => <ImagePost />}
+            ItemSeparatorComponent={<View w={2}></View>}
+            keyExtractor={item => item}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
         </HStack>
       </>
     );
