@@ -22,15 +22,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import EvilIcons from 'react-native-vector-icons/EvillIcons';
 import {Total, Totals, Totalb} from './data';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function DetailSecond() {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Box bg='#F8F9FA' mt='6'>
-
+      <Box bg="#F8F9FA" mt="6">
         {Total.map((item, index) => (
           <Box key={index}>
             <Title key={index} titles={item.titles} icons={item.icons} />
@@ -39,15 +38,7 @@ export default function DetailSecond() {
         ))}
         <Containerchip />
         <Containerlof />
-        <Divider
-          my="5"
-          _light={{
-            bg: 'muted.500',
-          }}
-          _dark={{
-            bg: 'muted.50',
-          }}
-        />
+        <Divider my="5" bg="muted.50" />
         <Buttons />
       </Box>
     </SafeAreaView>
@@ -139,8 +130,14 @@ function Containerchip() {
                 <HStack key={index} flexWrap={'wrap'} space="4" mb="2" mt="2">
                   {item.content.map((text, index) => {
                     return (
-                      <Center mb="2">
-                        <Text bg="white" fontWeight='600' borderRadius={20} px='4' py="2" key={index}>
+                      <Center key={index} mb="2">
+                        <Text
+                          bg="white"
+                          fontWeight="600"
+                          borderRadius={20}
+                          px="4"
+                          py="2"
+                          key={index}>
                           {text}
                         </Text>
                       </Center>
@@ -178,53 +175,41 @@ function Containerlof() {
               return (
                 <HStack
                   key={index}
-                  direction="row"
-                  pt="2"
-                  my='3'
+                  pr="4"
+                  my="3"
                   borderWidth={0.2}
                   borderColor="gray.500"
                   borderRadius={5}
+                  alignItems='center'
                   bg="gray.100">
-                    {
-                      item.icon === 'language'?
-                      <Icon
-                        as={FontAwesome}
-                        color='gray.500'
-                        name={item.icon}
-                        size="10"
-                        m="4"
-                      />
-                      :
-                      <Icon
-                      as={MaterialIcons}
-                      color='primary.500'
-                      name={item.icon}
-                      size="10"
-                      m="4"
-                    />
+                  <Icon
+                    as={item.icon === 'language' ? FontAwesome : MaterialIcons}
+                    color={
+                      item.icon === 'language' ? 'gray.500' : 'primary.500'
                     }
-                  <VStack>
-                    <View p="2" mr="16">
-                      <Stack direction="row" alignItems="center">
-                        <Heading key={index} size="xs">
-                          {item.title}
-                        </Heading>
-                      </Stack>
-                      {item.content.map((text, index) => {
-                        return <Text key={index}>{text}</Text>;
-                      })}
-                    </View>
+                    name={item.icon}
+                    size="10"
+                    m="4"
+                  />
+                  <VStack flex={1}>
+                    <HStack alignItems="center" justifyContent="space-between">
+                      <Heading key={index} size="xs">
+                        {item.title}
+                      </Heading>
+                      {i.flag === 1 ? (
+                        <Link
+                          _text={{
+                            color: 'gray.500',
+                          }}
+                          fontWeight="400">
+                          See more
+                        </Link>
+                      ) : null}
+                    </HStack>
+                    {item.content.map((text, index) => {
+                      return <Text key={index}>{text}</Text>;
+                    })}
                   </VStack>
-
-                  {i.flag === 1 ? (
-                    <Link
-                      _text={{
-                        color: 'gray.500',
-                      }}
-                      fontWeight="400">
-                      See more
-                    </Link>
-                  ) : null}
                 </HStack>
               );
             })}

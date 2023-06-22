@@ -17,12 +17,7 @@ import {
 import {NavigationContext} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, SafeAreaView, StatusBar, ScrollView} from 'react-native';
 const Detail_First = () => {
   const navigation = useContext(NavigationContext);
   const ComponentText = (text, comment, flag) => {
@@ -79,7 +74,11 @@ const Detail_First = () => {
           w="100%"
           px="4"
           justifyContent="space-between">
-          <IconButton onPress={navigation.goBack} icon={<CloseIcon size="5" color="black.50" />} p="0" />
+          <IconButton
+            onPress={navigation.goBack}
+            icon={<CloseIcon size="5" color="black.50" />}
+            p="0"
+          />
           <Icon
             name="dots-horizontal"
             as={MaterialCommunityIcons}
@@ -92,7 +91,7 @@ const Detail_First = () => {
           position="absolute"
           w={20}
           alignItems="center"
-          bottom={6}
+          bottom={2}
           right={10}
           justifyContent="space-between">
           <Icon as={Ionicons} name="eye" color="black.50" size="4" />
@@ -104,32 +103,28 @@ const Detail_First = () => {
   };
   const ComponentAvatar = () => {
     return (
-      <HStack mx={6} justifyContent="space-around" alignItems="center" mt="-5%">
-        <VStack>
-          <Avatar
-            borderWidth={4}
-            borderColor="primary.600"
-            source={{
-              uri: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-            }}
-            size="xl">
-            <Avatar.Badge
-              size={8}
-              bg="primary.600"
-              alignItems="center"
-              justifyContent="center"
-              borderColor="primary.600">
-              <Icon
-                as={MaterialCommunityIcons}
-                name="hand-wave"
-                color="white"
-              />
-            </Avatar.Badge>
-          </Avatar>
-        </VStack>
-        <VStack>{ComponentText('100K', 'Interests')}</VStack>
-        <VStack>{ComponentText('100', 'Matches')}</VStack>
-        <VStack>{ComponentText('10', 'Endorsements', 'underline')}</VStack>
+      <HStack mx={6} justifyContent="space-around" alignItems="center" mt="-3">
+        <Avatar
+          borderWidth={4}
+          borderColor="primary.600"
+          source={{
+            uri: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+          }}
+          size="xl">
+          <Avatar.Badge
+            size={8}
+            bg="primary.600"
+            alignItems="center"
+            justifyContent="center"
+            borderColor="primary.600">
+            <Icon as={MaterialCommunityIcons} name="hand-wave" color="white" />
+          </Avatar.Badge>
+        </Avatar>
+        <HStack mt='5%' justifyContent="space-evenly" flex={1}>
+          <VStack>{ComponentText('100K', 'Interests')}</VStack>
+          <VStack>{ComponentText('100', 'Matches')}</VStack>
+          <VStack>{ComponentText('10', 'Endorsements', 'underline')}</VStack>
+        </HStack>
       </HStack>
     );
   };
@@ -237,29 +232,29 @@ const Detail_First = () => {
   };
   return (
     <SafeAreaView>
-        <View bg="#F8F9FA" position="relative">
-          <ComponentHeader />
-          <ComponentAvatar />
-          <ComponentInfo />
-          <HStack
-            h={10}
-            mx={6}
-            bg="#E9F0F1"
-            borderRadius={10}
-            mt={2}
-            pl={3}
-            alignItems="center">
-            <Radio.Group value="one">
-              <Radio shadow={2} value="one" my="1">
-                <Text fontSize="md" color="primary.600">
-                  Open for collaboration
-                </Text>
-              </Radio>
-            </Radio.Group>
-          </HStack>
-          <ComponentContent />
-          <ComponentPost />
-        </View>
+      <View bg="#F8F9FA" position="relative">
+        <ComponentHeader />
+        <ComponentAvatar />
+        <ComponentInfo />
+        <HStack
+          h={10}
+          mx={6}
+          bg="#E9F0F1"
+          borderRadius={10}
+          mt={2}
+          pl={3}
+          alignItems="center">
+          <Radio.Group value="one">
+            <Radio shadow={2} value="one" my="1">
+              <Text fontSize="md" color="primary.600">
+                Open for collaboration
+              </Text>
+            </Radio>
+          </Radio.Group>
+        </HStack>
+        <ComponentContent />
+        <ComponentPost />
+      </View>
     </SafeAreaView>
   );
 };
