@@ -10,7 +10,6 @@ import FilterScreen from '../screen/filter/filter';
 import Detail from '../screen/detail';
 
 const Tab = createBottomTabNavigator();
-
 const BottomTabs = () => {
   return (
     <Tab.Navigator

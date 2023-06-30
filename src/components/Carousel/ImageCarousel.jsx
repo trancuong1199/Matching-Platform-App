@@ -4,7 +4,7 @@ import {View, Icon, Row} from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-deck-swiper';
 
-import {contentData} from '../../Services/Data/homeData';
+import {contentData} from '../../services/Data/homeData';
 import {ImageSlider} from '../Slider';
 
 // Carousel

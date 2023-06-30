@@ -18,13 +18,15 @@ import {
   Image,
 } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux'
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {Total, Totals, Totalb} from './data';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { Total, Totals, Totalb } from './data';
+import { useNavigation } from '@react-navigation/native';
+import { removeTokenOnKeychain } from '../../services/keychain';
+import { removeToken } from '../../redux/authSlice';
 
 export default function DetailSecond() {
   return (
@@ -43,7 +45,7 @@ export default function DetailSecond() {
   );
 }
 
-function Title({titles, icons}) {
+function Title({ titles, icons }) {
   return (
     <Flex direction="row" my="2" mx="6">
       <Icon
@@ -58,7 +60,7 @@ function Title({titles, icons}) {
   );
 }
 
-function Containerbox({data, flag}) {
+function Containerbox({ data, flag }) {
   return (
     <Box>
       {data.map((item, index) => {
@@ -139,7 +141,7 @@ function Containerchip() {
                           px="4"
                           py="2"
                           shadowColor="gray.500"
-                          shadowOffset={{width: 0, height: 2}}
+                          shadowOffset={{ width: 0, height: 2 }}
                           shadowOpacity={0.3}
                           shadowRadius={4}
                           elevation={4}
@@ -227,6 +229,12 @@ function Containerlof() {
 }
 
 function Buttons() {
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+  const logOut = () => {
+    dispatch(removeToken())
+    removeTokenOnKeychain()
+  }
   return (
     <Stack
       justifyContent={'center'}
@@ -237,8 +245,9 @@ function Buttons() {
       }}
       space={10}>
       <Button
+        onPress={() => logOut()}
         shadowColor="gray.500"
-        shadowOffset={{width: 0, height: 2}}
+        shadowOffset={{ width: 0, height: 2 }}
         shadowOpacity={0.3}
         shadowRadius={4}
         elevation={4}
@@ -251,7 +260,7 @@ function Buttons() {
       </Button>
       <Button
         shadowColor="gray.500"
-        shadowOffset={{width: 0, height: 2}}
+        shadowOffset={{ width: 0, height: 2 }}
         shadowOpacity={0.3}
         shadowRadius={4}
         elevation={4}

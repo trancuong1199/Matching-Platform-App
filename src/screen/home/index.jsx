@@ -4,7 +4,7 @@ import {View, Avatar, HStack, Divider, Box, Pressable} from 'native-base';
 import {NavigationContext} from '@react-navigation/native';
 
 import Chip from '../../components/Chip/Chip';
-import {chipData, historyDetailData} from '../../Services/Data/homeData';
+import {chipData, historyDetailData} from '../../services/Data/homeData';
 import {HistoryDetail} from '../../components/Detail';
 import {LocationSelect} from '../../components/Select';
 import {ImageCarousel} from '../../components/Carousel';

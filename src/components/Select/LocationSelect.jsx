@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Icon, Box, Select, CheckIcon} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {locationData} from '../../Services/Data/homeData';
+import {locationData} from '../../services/Data/homeData';
 
 export function LocationSelect() {
   const [location, setLocation] = useState('');
